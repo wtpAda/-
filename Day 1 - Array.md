@@ -1,6 +1,7 @@
 # Day 1 Array 
 
-## 1. Binary Search - 204. Binary Search
+## 1. Binary Search - 
+204. Binary Search <br>
 Time complexity: O(log n) <br>
 Application: ranked and non-duplicate array
 
@@ -26,6 +27,37 @@ public:
 
         }
         return -1;
+
+    }
+};
+``````
+## 37. Search insert position
+https://leetcode.cn/problems/search-insert-position/description/
+what confused me is the occasion of not finding, we need to consider 3 conditions: <br>
+1. before the front of the array<br>
+2. behind the end of the array<br>
+3. find insert postion within array
+```cpp
+//37. Search insert position
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int left = 0;
+        int right = nums.size()-1;
+        
+        while (left<=right){
+            int mid = (left+ right)/2;
+            if (nums[mid]>target){
+                right = mid-1;
+            }
+            else if (nums[mid]<target){
+                left = mid+1;
+            }
+            else {
+                return mid;
+            }
+        } 
+        return right +1;
 
     }
 };
