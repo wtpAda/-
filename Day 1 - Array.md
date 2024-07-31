@@ -64,8 +64,9 @@ public:
 ``````
 ## 34. find first and last position of element in sorted array
 https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
-## 69. Sqrt(X)
-https://leetcode.cn/problems/sqrtx/
+## 69. Sqrt(X) & 367 Ferfect square
+https://leetcode.cn/problems/sqrtx/ <br>
+https://leetcode.cn/problems/valid-perfect-square/<br>
 1. (long long) is needed;<br>
    
 ```cpp
