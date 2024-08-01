@@ -3,7 +3,9 @@
 ## 1. sliding window 滑动窗口
 209. min size subarray sum<br>
 Time complexity: O(n) <br>
-https://leetcode.cn/problems/minimum-size-subarray-sum/
+https://leetcode.cn/problems/minimum-size-subarray-sum/<br>
+可以将原本O(N^2)降低为）O(N), for 遍历窗口末端index， 同时不断更新窗口初始位置Index, 每个元素一进一出两次操作<br>
+主要不要打乱原始数组顺序<br>
 
 ```cpp
 class Solution {
@@ -30,8 +32,9 @@ public:
 };
 ``````
 ## 2. process monitoring - 模拟过程
-59. Spiral matrix 2
+59. Spiral matrix 2<br>
 Time complexity: O(n^2) <br>
+主要是要按顺序进行模拟，以及注意边界（左闭右开）<br>
 https://leetcode.cn/problems/spiral-matrix-ii/
 ```cpp
 class Solution {
@@ -74,6 +77,8 @@ public:
 };
 ``````
 ## 3. 区间和
+也可以说是前缀和， 通过cum_sum 避免O(N^2)<br>
+时间复杂度： O(N) <br>
 https://kamacoder.com/problempage.php?pid=1070
 ```cpp
 #include <iostream>
