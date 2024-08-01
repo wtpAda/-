@@ -64,6 +64,56 @@ public:
 ``````
 ## 34. find first and last position of element in sorted array
 https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
+```cpp
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int LeftBorder = getLeftBorder(nums, target);
+        int RightBorder = getRightBorder(nums, target);
+        if (LeftBorder ==-2 || RightBorder==-2) return {-1, -1};
+        else if (RightBorder - LeftBorder>1) return {LeftBorder+1, RightBorder-1};
+        else return {-1, -1};}
+
+private:
+        int getRightBorder(vector<int>& nums, int target){
+            int left = 0;
+            int right  = nums.size()-1;
+            int RightBorder=-2;
+            while (left<=right){
+                int mid = (left+right)/2;
+                if (nums[mid]>target){
+                    right = mid -1;
+                }
+                else{
+                    left = mid+1;
+                    RightBorder = left;
+                }
+            }
+            return RightBorder;
+        }
+
+        int getLeftBorder(vector<int>& nums, int target){
+            int left = 0;
+            int right  = nums.size()-1;
+            int LeftBorder=-2;
+            while (left<=right){
+                int mid = (left+right)/2;
+                if (nums[mid]<target){
+                    left = mid +1;
+                }
+                else{
+                    right = mid-1;
+                    LeftBorder = right;
+                }
+            }
+            return LeftBorder;
+        }
+        
+
+
+    
+};
+``````
 ## 69. Sqrt(X) & 367 Ferfect square
 https://leetcode.cn/problems/sqrtx/ <br>
 https://leetcode.cn/problems/valid-perfect-square/<br>
