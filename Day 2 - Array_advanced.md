@@ -102,3 +102,51 @@ int main(){
     
 }
 ``````
+## 房地产问题 （***）
+也是用区间和法，将原本时间复杂度由O(N^3), 简化到O(N^2), 整体流程稍复杂，需要多看<br>
+https://kamacoder.com/problempage.php?pid=1044
+```cpp
+#include <iostream>
+#include <climits>
+#include <vector>
+using namespace std;
+int main(){
+    int n, m;
+    cin>> n >> m;
+    vector<vector<int>> vec(n, vector<int>(m,0));
+    int sum=0;
+    for (int i = 0; i<n; i++){
+        for (int j=0; j<m; j++){
+            cin >> vec[i][j];
+            sum += vec[i][j];
+        }
+    }
+    
+    vector<int> horizontal(n, 0);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0 ; j < m; j++) {
+            horizontal[i] += vec[i][j];
+        }
+    }
+    // 统计纵向
+    vector<int> vertical(m , 0);
+    for (int j = 0; j < m; j++) {
+        for (int i = 0 ; i < n; i++) {
+            vertical[j] += vec[i][j];
+        }
+    }
+    int result = INT_MAX;
+    int horizontal_cut = 0;
+    int vertical_cut = 0;
+    for (int i = 0; i<n; i++){
+        horizontal_cut+=horizontal[i];
+        result = min(result, abs(sum-horizontal_cut*2));
+    }
+    for (int j = 0; j<m; j++){
+        vertical_cut+=vertical[j];
+        result = min(result, abs(sum-vertical_cut*2));
+    }
+    cout << result << endl;
+     
+}
+``````
